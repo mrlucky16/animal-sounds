@@ -1,0 +1,16 @@
+services:
+  animal-sounds:
+    build: .
+    image: animal-sounds:latest
+    container_name: animal-sounds
+    restart: unless-stopped
+    # No published port: Nginx Proxy Manager reaches it as http://animal-sounds:80
+    networks: [proxy]
+    # Optional: real recordings (dog.mp3, cow.mp3 ...) without rebuilding:
+    # volumes:
+    #   - /opt/animal-sounds/sounds:/usr/share/nginx/html/sounds:ro
+
+networks:
+  proxy:
+    external: true
+    name: reverse-proxy_default
