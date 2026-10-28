@@ -1,0 +1,13 @@
+{
+  "name": "Animal Sounds / Les sons des animaux",
+  "short_name": "Animals",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#cfeeff",
+  "theme_color": "#cfeeff",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
