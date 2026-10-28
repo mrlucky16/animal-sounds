@@ -1,6 +1,6 @@
 /* Tiny offline cache so the app keeps working without a network once it has been opened once. */
-const CACHE = 'animal-sounds-v1';
-const ASSETS = ['./', 'index.html', 'style.css', 'animals.js', 'sounds.js', 'app.js', 'manifest.json', 'icon.svg'];
+const CACHE = 'animal-sounds-v2';
+const ASSETS = ['./', 'index.html', 'style.css', 'animals.js', 'sounds.js', 'more-animals.js', 'app.js', 'manifest.json', 'icon.svg'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
