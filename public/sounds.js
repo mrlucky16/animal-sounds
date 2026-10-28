@@ -196,23 +196,21 @@ window.Sound = (function () {
 
   /* ---------- optional real recordings ---------- */
 
+  // Creates (once) an <audio> element for sounds/<id>.mp3. If the file does not exist, the entry
+  // becomes null and that animal falls back to its synthesized recipe.
+  function recording(id) {
+    if (recordings.has(id)) return recordings.get(id);
+    const a = new Audio();
+    a.preload = 'auto';
+    a.addEventListener('error', () => recordings.set(id, null), { once: true });
+    a.src = 'sounds/' + id + '.mp3';
+    recordings.set(id, a);
+    return a;
+  }
+
   function probe(id) {
-    return new Promise((resolve) => {
-      const a = new Audio();
-      a.preload = 'auto';
-      let done = false;
-      const finish = (ok) => {
-        if (done) return;
-        done = true;
-        recordings.set(id, ok ? a : null);
-        resolve(ok);
-      };
-      a.addEventListener('canplaythrough', () => finish(true), { once: true });
-      a.addEventListener('loadedmetadata', () => finish(true), { once: true });
-      a.addEventListener('error', () => finish(false), { once: true });
-      setTimeout(() => finish(false), 4000);
-      a.src = 'sounds/' + id + '.mp3';
-    });
+    recording(id);
+    return Promise.resolve();
   }
 
   function detectRecordings(ids) {
@@ -222,23 +220,35 @@ window.Sound = (function () {
   /* ---------- public API ---------- */
 
   // Must be called from a tap/click so mobile browsers allow audio. Returns the sound length in seconds.
-  function play(id) {
-    const rec = recordings.get(id);
-    if (rec) {
-      try {
-        rec.currentTime = 0;
-        const pr = rec.play();
-        if (pr && pr.catch) pr.catch(() => {});
-      } catch (e) { /* ignore */ }
-      return rec.duration && isFinite(rec.duration) ? rec.duration : 2;
-    }
+  function synth(id) {
     const c = getCtx();
     const recipe = RECIPES[id];
     if (!c || !recipe) return 0;
     return recipe(c);
   }
 
+  let current = null;
+
+  function play(id) {
+    const rec = recording(id);
+    if (rec) {
+      if (current && current !== rec) { try { current.pause(); } catch (e) { /* ignore */ } }
+      current = rec;
+      try {
+        rec.currentTime = 0;
+        const pr = rec.play();
+        // Missing file or blocked playback: fall back to the synthesized sound.
+        if (pr && pr.catch) pr.catch((err) => { if (!err || err.name !== 'NotAllowedError') { recordings.set(id, null); synth(id); } });
+      } catch (e) { return synth(id); }
+      return rec.duration && isFinite(rec.duration) ? rec.duration : 2.5;
+    }
+    return synth(id);
+  }
+
   function unlock() { getCtx(); }
 
-  return { play, cheer, oops, unlock, detectRecordings };
+  // Lets other files (e.g. more-animals.js) register extra sound recipes built from tone() / noise().
+  function add(id, recipe) { RECIPES[id] = recipe; }
+
+  return { play, cheer, oops, unlock, detectRecordings, add, tone, noise };
 })();
