@@ -1,0 +1,28 @@
+# Real animal recordings, downloaded and trimmed at Docker build time.
+# id | source URL | start (s) | length (s) | credit
+# BigSoundBank (Joseph Sardin) sounds are CC0 / royalty-free; NPS Yellowstone recordings are public domain;
+# Mixkit sounds are under the Mixkit Sound Effects Free License; Wikimedia Commons file is CC0.
+dog     | https://bigsoundbank.com/UPLOAD/mp3/2954.mp3 | 0.0  | 2.6 | BigSoundBank #2954 Barking Dog
+cat     | https://bigsoundbank.com/UPLOAD/mp3/1890.mp3 | 0.0  | 2.4 | BigSoundBank #1890 Meow Cat
+cow     | https://bigsoundbank.com/UPLOAD/mp3/2383.mp3 | 0.0  | 3.0 | BigSoundBank #2383 Cow moos
+duck    | https://bigsoundbank.com/UPLOAD/mp3/0276.mp3 | 0.0  | 3.0 | BigSoundBank #0276 Ducks
+pig     | https://bigsoundbank.com/UPLOAD/mp3/1658.mp3 | 0.0  | 3.5 | BigSoundBank #1658 Grumpy pig
+sheep   | https://bigsoundbank.com/UPLOAD/mp3/2348.mp3 | 0.0  | 1.1 | BigSoundBank #2348 Sheep
+rooster | https://bigsoundbank.com/UPLOAD/mp3/0283.mp3 | 0.0  | 2.4 | BigSoundBank #0283 Rooster Song
+frog    | https://bigsoundbank.com/UPLOAD/mp3/0819.mp3 | 6.5  | 3.0 | BigSoundBank #0819 One frog
+owl     | https://bigsoundbank.com/UPLOAD/mp3/1764.mp3 | 4.4  | 2.4 | BigSoundBank #1764 Tawny Owl
+horse   | https://bigsoundbank.com/UPLOAD/mp3/0863.mp3 | 0.0  | 2.0 | BigSoundBank #0863 Horse Neighing
+goat    | https://bigsoundbank.com/UPLOAD/mp3/0279.mp3 | 0.0  | 1.3 | BigSoundBank #0279 Bleating Goat
+bee     | https://bigsoundbank.com/UPLOAD/mp3/1000.mp3 | 1.0  | 3.0 | BigSoundBank #1000 Bumblebee
+bird    | https://bigsoundbank.com/UPLOAD/mp3/1670.mp3 | 0.5  | 2.7 | BigSoundBank #1670 Robin
+mouse   | https://bigsoundbank.com/UPLOAD/mp3/0459.mp3 | 0.3  | 3.7 | BigSoundBank #0459 Mouse screams
+donkey  | https://bigsoundbank.com/UPLOAD/mp3/1551.mp3 | 1.6  | 4.0 | BigSoundBank #1551 Donkey, Braying
+chick   | https://bigsoundbank.com/UPLOAD/mp3/0672.mp3 | 10.0 | 3.0 | BigSoundBank #0672 Chick that chirp
+wolf    | https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-YELLWolvesDec252013.mp3 | 0.2 | 4.0 | NPS Yellowstone, wolves (public domain)
+bear    | https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-YELLGrizzlyBearVocalizations20160520Android1.mp3 | 32.9 | 3.4 | NPS Yellowstone, grizzly bear (public domain)
+lion    | https://assets.mixkit.co/active_storage/sfx/6/6-preview.mp3 | 0.0 | 1.3 | Mixkit "Wild lion animal roar"
+monkey  | https://assets.mixkit.co/active_storage/sfx/106/106-preview.mp3 | 0.0 | 2.2 | Mixkit "Excited monkey thumping chest call"
+tiger   | https://assets.mixkit.co/active_storage/sfx/88/88-preview.mp3 | 0.0 | 1.6 | Mixkit "Big wild cat scary roar"
+gorilla | https://assets.mixkit.co/active_storage/sfx/2419/2419-preview.mp3 | 0.0 | 1.7 | Mixkit "Jungle ape sound"
+dragon  | https://assets.mixkit.co/active_storage/sfx/309/309-preview.mp3 | 0.0 | 3.5 | Mixkit "Angry dragon growl"
+elephant| https://upload.wikimedia.org/wikipedia/commons/4/40/Elephant_voice_-_trumpeting.ogg | 0.0 | 1.5 | Wikimedia Commons "Elephant voice - trumpeting" (CC0)
